@@ -42,6 +42,14 @@ Notes on the design:
 - **Discoverable domain.** [ERC-5267](https://eips.ethereum.org/EIPS/eip-5267) `eip712Domain()` exposes the full domain (including the non-standard `salt`), so signers/tooling can reconstruct the signing domain on-chain instead of hardcoding it per deployment.
 - **EntryPoints.** Two canonical EntryPoints are trusted as callers — v0.8 (`0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108`) and v0.9 (`0x433709009B8330FDa32311DF1C2AFA402eD8D009`) — at the same addresses on all supported chains. Discovery goes through `isSupportedEntryPoint(address)`, which probes that set — there is no single-valued `entryPoint()` getter, because the account trusts two EntryPoints rather than one (a call to that selector is absorbed by the empty `fallback` and returns no data, so tooling must not read it). Each EntryPoint binds its own address as the EIP-712 `verifyingContract`, so a userOp signature never replays across the two.
 
+## Audits
+
+| Date | Auditor | Scope | Report |
+| --- | --- | --- | --- |
+| 2026-08-14 → 2026-08-19, report 2026-09-07 | [OpenZeppelin](https://www.openzeppelin.com/) | `contracts/` at [`0423b8a`](https://github.com/tonkeeper/Hermes/commit/0423b8a); fixes verified at [`63a4bd7`](https://github.com/tonkeeper/Hermes/commit/63a4bd7) | [PDF](audits/2026-09-07-openzeppelin-hermes-evm-gasless-contract.pdf) |
+
+17 findings (6 Low, 11 Notes; no Critical, High or Medium): 14 resolved, L-05 partially resolved (the ERC-4337 path is deliberately not pinned to the implementation), N-09 and N-11 acknowledged as intended behaviour.
+
 ## Development
 
 Toolchain: Hardhat, Solidity 0.8.35 (viaIR, Prague EVM), TypeChain, ethers v6.
