@@ -50,6 +50,19 @@ Notes on the design:
 
 17 findings (6 Low, 11 Notes; no Critical, High or Medium): 14 resolved, L-05 partially resolved (the ERC-4337 path is deliberately not pinned to the implementation), N-09 and N-11 acknowledged as intended behaviour.
 
+## Deployed contracts (v1.0.0)
+
+The same two addresses on every supported chain, deployed through the canonical CREATE2 proxy.
+
+**Deployed from the [`deploy/v1_0_0`](https://github.com/tonkeeper/Hermes/tree/deploy/v1_0_0) branch** (build commits [`5f4c00f`](https://github.com/tonkeeper/Hermes/commit/5f4c00f538500997395dde27dde72a02bb5e976b) for BSC and Arbitrum One, [`430946d`](https://github.com/tonkeeper/Hermes/commit/430946dd19747c3d1fc177a8f2800bc688dc5d87) for Base and Ethereum; the contract sources are identical in both). That branch carries the compiler settings, the CREATE2 salt and the deploy/verify scripts that reproduce the deployed bytecode; `main` carries the sources and these records only. Transaction hashes, init-code hashes and the build commit of every deployment are in [`deployments/`](deployments).
+
+| Contract | Address | Ethereum | BSC | Arbitrum One | Base |
+| --- | --- | --- | --- | --- | --- |
+| `HermesV1` | `0x79ffaCa44dC6A7aAC1ad0239e398D652317b167B` | [etherscan](https://etherscan.io/address/0x79ffaCa44dC6A7aAC1ad0239e398D652317b167B#code) | [bscscan](https://bscscan.com/address/0x79ffaCa44dC6A7aAC1ad0239e398D652317b167B#code) | [arbiscan](https://arbiscan.io/address/0x79ffaCa44dC6A7aAC1ad0239e398D652317b167B#code) | [basescan](https://basescan.org/address/0x79ffaCa44dC6A7aAC1ad0239e398D652317b167B#code) |
+| `HermesDelegateV1` | `0x24b576BC271823bF9C24BE627B4363b9b00191e9` | [etherscan](https://etherscan.io/address/0x24b576BC271823bF9C24BE627B4363b9b00191e9#code) | [bscscan](https://bscscan.com/address/0x24b576BC271823bF9C24BE627B4363b9b00191e9#code) | [arbiscan](https://arbiscan.io/address/0x24b576BC271823bF9C24BE627B4363b9b00191e9#code) | [basescan](https://basescan.org/address/0x24b576BC271823bF9C24BE627B4363b9b00191e9#code) |
+
+Source is verified on each explorer and on [Sourcify](https://sourcify.dev) (exact match).
+
 ## Development
 
 Toolchain: Hardhat, Solidity 0.8.35 (viaIR, Prague EVM), TypeChain, ethers v6.
