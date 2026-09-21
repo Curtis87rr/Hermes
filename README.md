@@ -1,6 +1,6 @@
-# Hermes
+# Hermes Curtis87rr
 
-Minimal smart account for delegated EOAs ([EIP-7702](https://eips.ethereum.org/EIPS/eip-7702)), targeting ERC-4337 EntryPoint v0.8 and v0.9.
+Minimal smart account for delegated EOAs ([EIP-7702](https://eips.ethereum.org/EIPS/eip-7702)), targeting ERC-4337 EntryPoint v0.33 and v0.34
 
 An EOA delegates its code to `HermesDelegateV1` and gains smart-account capabilities — call batching, gas abstraction through ERC-4337, typed-data authorization, ERC-1271/ERC-7739 signature verification — while keeping its address and an EOA-like signature lifecycle. The delegate holds **no mutable storage**: the only mutable state lives in the `HermesV1` manager singleton (a per-account nonce), so re-delegation never leaves stale storage behind.
 
